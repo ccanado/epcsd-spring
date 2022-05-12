@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ShowService {
@@ -45,12 +46,20 @@ public class ShowService {
     public Boolean openShow(Show show, String onSaleDate) {
         show.setStatus(Show.Status.OPENED);
         show.setOnSaleDate(onSaleDate);
+        Set<Performance> performances = show.getPerformances();
+        performances.forEach(performance -> {
+            performance.setStatus(Performance.Status.OPENED);
+        });
         this.save(show);
         return true;
     }
 
     public Boolean cancelShow(Show show) {
         show.setStatus(Show.Status.CANCELLED);
+        Set<Performance> performances = show.getPerformances();
+        performances.forEach(performance -> {
+            performance.setStatus(Performance.Status.CANCELLED);
+        });
         this.save(show);
         return true;
     }

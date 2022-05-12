@@ -44,7 +44,7 @@ public class Show {
     @ElementCollection(targetClass = Performance.class)
     @JoinTable(name = "performance")
     @JoinColumn(name = "show_id", referencedColumnName = "id")
-    private Set performances;
+    private Set<Performance> performances;
 
     public void addPerformance(Performance performance) {
         this.performances.add(performance);

@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc266451-1d93-4600-9e3e-ff4cae9dd819" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/dto/StatusDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/exceptions/ShowUpdateNotAllowedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Show.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/vo/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/vo/Performance.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1652299156080" duration="655000" />
       <workItem from="1652303853653" duration="16351000" />
       <workItem from="1652374494325" duration="10102000" />
-      <workItem from="1652389175833" duration="3695000" />
+      <workItem from="1652389175833" duration="4736000" />
     </task>
     <servers />
   </component>

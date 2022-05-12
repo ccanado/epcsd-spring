@@ -25,6 +25,8 @@ public class Performance {
     private Status status;
 
     public static enum Status {
-        CREATED
+        CREATED,
+        OPENED,
+        CANCELLED
     }
 }
