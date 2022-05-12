@@ -1,27 +1,27 @@
 package edu.uoc.epcsd.showcatalog.controllers;
 
+import edu.uoc.epcsd.showcatalog.dto.PerformanceDto;
 import edu.uoc.epcsd.showcatalog.dto.ShowDto;
 import edu.uoc.epcsd.showcatalog.entities.Category;
 import edu.uoc.epcsd.showcatalog.entities.Show;
-import edu.uoc.epcsd.showcatalog.repositories.ShowRepository;
+import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
+import edu.uoc.epcsd.showcatalog.exceptions.ShowNotFoundException;
 import edu.uoc.epcsd.showcatalog.services.CategoryService;
+import edu.uoc.epcsd.showcatalog.services.ShowService;
+import edu.uoc.epcsd.showcatalog.vo.Performance;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Log4j2
 @RestController
 @RequestMapping("/show")
 public class ShowController {
-
     @Autowired
-    private ShowRepository showRepository;
-
+    private ShowService showService;
     @Autowired
     private CategoryService categoryService;
 
@@ -32,21 +32,25 @@ public class ShowController {
         Optional<Category> category = categoryService.findById(showDto.getCategoryId());
 
         if (category.isPresent()) {
-            Show newShow = new Show();
-            newShow.setCategory(category.get());
-            newShow.setName(showDto.getName());
-            newShow.setDescription(showDto.getDescription());
-            newShow.setImage(showDto.getImage());
-            newShow.setPrice(showDto.getPrice());
-            newShow.setDuration(showDto.getDuration());
-            newShow.setCapacity(showDto.getCapacity());
-            newShow.setStatus(Show.Status.CREATED);
-            showRepository.save(newShow);
+            Show newShow = showService.createShow(showDto, category.get());
             categoryService.notifyNewShow(newShow);
             return newShow.getId();
         } else {
-            log.error("Category {} not found", showDto.getCategoryId());
-            throw new IllegalArgumentException("Category not found");
+            throw new CategoryNotFoundException(String.format("Category with id %d not found", showDto.getCategoryId()));
+        }
+    }
+
+    @PutMapping("/{showId}/performance")
+    @ResponseStatus(HttpStatus.OK)
+    public Performance createPerformance(@PathVariable Long showId, @RequestBody PerformanceDto performanceDto) {
+        log.info("Creating performance {} for show {}", performanceDto, showId);
+        Optional<Show> show = showService.findById(showId);
+
+        if (show.isPresent()) {
+            Performance newPerformance = showService.createPerformance(show.get(), performanceDto);
+            return newPerformance;
+        } else {
+            throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
         }
     }
 }

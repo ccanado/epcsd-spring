@@ -1,21 +1,15 @@
 package edu.uoc.epcsd.showcatalog.entities;
 
-import lombok.*;
+import edu.uoc.epcsd.showcatalog.vo.Performance;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+@Data
 @Entity
-@ToString
-@Getter
-@Setter
-@EqualsAndHashCode
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Show {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,8 +39,17 @@ public class Show {
     private Status status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryId", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @ElementCollection(targetClass = Performance.class)
+    @JoinTable(name = "performance")
+    @JoinColumn(name = "show_id", referencedColumnName = "id")
+    private Set performances;
+
+    public void addPerformance(Performance performance) {
+        this.performances.add(performance);
+    }
 
     public static enum Status {
         CREATED
