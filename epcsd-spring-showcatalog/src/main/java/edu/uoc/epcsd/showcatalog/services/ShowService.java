@@ -24,7 +24,9 @@ public class ShowService {
         return showRepository.findById(id);
     }
 
-    public Show save(Show show) { return showRepository.save(show);}
+    public Show save(Show show) { return showRepository.save(show); }
+
+    public void delete(Long id) { showRepository.deleteById(id); }
 
     public Show createShow(ShowDto showDto, Category category) {
         Show newShow = new Show();

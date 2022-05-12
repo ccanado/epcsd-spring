@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc266451-1d93-4600-9e3e-ff4cae9dd819" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/dto/PerformanceDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/exceptions/CategoryNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/exceptions/ShowNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/exceptions/CategoryAlreadyExistsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/PerformanceController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/vo/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/entities/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/repositories/PerformanceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/repositories/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +103,7 @@
       <workItem from="1652208110801" duration="14580000" />
       <workItem from="1652299156080" duration="655000" />
       <workItem from="1652303853653" duration="16351000" />
-      <workItem from="1652374494325" duration="2500000" />
+      <workItem from="1652374494325" duration="7316000" />
     </task>
     <servers />
   </component>
