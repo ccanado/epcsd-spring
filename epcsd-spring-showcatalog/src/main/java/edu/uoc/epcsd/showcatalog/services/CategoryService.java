@@ -3,6 +3,9 @@ package edu.uoc.epcsd.showcatalog.services;
 import edu.uoc.epcsd.showcatalog.dto.CategoryDto;
 import edu.uoc.epcsd.showcatalog.entities.Category;
 import edu.uoc.epcsd.showcatalog.entities.Show;
+import edu.uoc.epcsd.showcatalog.exceptions.CategoryAlreadyExistsException;
+import edu.uoc.epcsd.showcatalog.exceptions.CategoryDeleteNotAllowedException;
+import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
 import edu.uoc.epcsd.showcatalog.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -40,10 +43,29 @@ public class CategoryService {
     }
 
     public Category createCategory(CategoryDto categoryDto) {
-        Category newCategory = new Category();
-        newCategory.setName(categoryDto.getName());
-        newCategory.setDescription(categoryDto.getDescription());
-        this.save(newCategory);
-        return newCategory;
+        Optional<Category> category = this.findByName(categoryDto.getName());
+        if (category.isPresent()) {
+            throw new CategoryAlreadyExistsException(String.format("Category with name '%s' already exists", categoryDto.getName()));
+        } else {
+            Category newCategory = new Category();
+            newCategory.setName(categoryDto.getName());
+            newCategory.setDescription(categoryDto.getDescription());
+            this.save(newCategory);
+            return newCategory;
+        }
+    }
+
+    public Boolean deleteCategoryById(Long categoryId) {
+        Optional<Category> category = this.findById(categoryId);
+        if (category.isPresent()) {
+            if (category.get().getShows().isEmpty()) {
+                this.delete(categoryId);
+                return true;
+            } else {
+                throw new CategoryDeleteNotAllowedException(String.format("Category with id '%s' cannot be deleted because it has related shows", categoryId));
+            }
+        } else {
+            throw new CategoryNotFoundException(String.format("Category with id %d not found", categoryId));
+        }
     }
 }

@@ -2,7 +2,6 @@ package edu.uoc.epcsd.showcatalog.controllers;
 
 import edu.uoc.epcsd.showcatalog.dto.CategoryDto;
 import edu.uoc.epcsd.showcatalog.entities.Category;
-import edu.uoc.epcsd.showcatalog.exceptions.CategoryAlreadyExistsException;
 import edu.uoc.epcsd.showcatalog.services.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,8 +11,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Log4j2
 @RestController
@@ -32,13 +29,20 @@ public class CategoryController {
     })
     public Long createCategory(@RequestBody CategoryDto categoryDto) {
         log.info("Creating category: {}", categoryDto);
-        Optional<Category> category = categoryService.findByName(categoryDto.getName());
+        Category newCategory = categoryService.createCategory(categoryDto);
+        return newCategory.getId();
+    }
 
-        if (category.isPresent()) {
-            throw new CategoryAlreadyExistsException(String.format("Category with name '%s' already exists", categoryDto.getName()));
-        } else {
-            Category newCategory = categoryService.createCategory(categoryDto);
-            return newCategory.getId();
-        }
+    @DeleteMapping("/{categoryId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete Category", description = "Deletion of a category by providing its id. It will deleted only if it is not associated to any show")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Category deleted successfully"),
+        @ApiResponse(responseCode = "400", description = "Category deletion bad request", content = @Content),
+        @ApiResponse(responseCode = "404", description = "Category provided not found", content = @Content)
+    })
+    public Boolean deleteCategory(@PathVariable Long categoryId) {
+        log.info("Deleting category: {}", categoryId);
+        return categoryService.deleteCategoryById(categoryId);
     }
 }

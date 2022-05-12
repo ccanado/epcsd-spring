@@ -3,12 +3,7 @@ package edu.uoc.epcsd.showcatalog.controllers;
 import edu.uoc.epcsd.showcatalog.dto.PerformanceDto;
 import edu.uoc.epcsd.showcatalog.dto.ShowDto;
 import edu.uoc.epcsd.showcatalog.dto.StatusDto;
-import edu.uoc.epcsd.showcatalog.entities.Category;
 import edu.uoc.epcsd.showcatalog.entities.Show;
-import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
-import edu.uoc.epcsd.showcatalog.exceptions.ShowNotFoundException;
-import edu.uoc.epcsd.showcatalog.exceptions.ShowUpdateNotAllowedException;
-import edu.uoc.epcsd.showcatalog.services.CategoryService;
 import edu.uoc.epcsd.showcatalog.services.ShowService;
 import edu.uoc.epcsd.showcatalog.vo.Performance;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,18 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
-
 @Log4j2
 @RestController
 @RequestMapping("/show")
 public class ShowController {
     @Autowired
     private ShowService showService;
-    @Autowired
-    private CategoryService categoryService;
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,15 +32,8 @@ public class ShowController {
     })
     public Long createShow(@RequestBody ShowDto showDto) {
         log.info("Creating show {}", showDto);
-        Optional<Category> category = categoryService.findById(showDto.getCategoryId());
-
-        if (category.isPresent()) {
-            Show newShow = showService.createShow(showDto, category.get());
-            categoryService.notifyNewShow(newShow);
-            return newShow.getId();
-        } else {
-            throw new CategoryNotFoundException(String.format("Category with id %d not found", showDto.getCategoryId()));
-        }
+        Show newShow = showService.createShow(showDto);
+        return newShow.getId();
     }
 
     @PutMapping("/{showId}/performance")
@@ -64,14 +46,8 @@ public class ShowController {
     })
     public Performance createPerformance(@PathVariable Long showId, @RequestBody PerformanceDto performanceDto) {
         log.info("Creating performance {} for show {}", performanceDto, showId);
-        Optional<Show> show = showService.findById(showId);
-
-        if (show.isPresent()) {
-            Performance newPerformance = showService.createPerformance(show.get(), performanceDto);
-            return newPerformance;
-        } else {
-            throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
-        }
+        Performance newPerformance = showService.createPerformance(showId, performanceDto);
+        return newPerformance;
     }
 
     @PatchMapping("/{showId}")
@@ -84,27 +60,12 @@ public class ShowController {
             @ApiResponse(responseCode = "405", description = "Show update not allowed", content = @Content)
     })
     public Boolean updateShowStatus(@PathVariable Long showId, @RequestBody StatusDto statusDto) {
-        Optional<Show> show = showService.findById(showId);
-
-        if (show.isPresent()) {
-            if ( statusDto.getOn() ) {
-                log.info("Opening show {}", showId);
-                if (show.get().getStatus() == Show.Status.CREATED) {
-                    String onSaleDate = statusDto.getDate()==null || statusDto.getDate().isEmpty() ? new SimpleDateFormat("dd/MM/yyyy").format(new Date()) : statusDto.getDate();
-                    return showService.openShow(show.get(), onSaleDate);
-                } else {
-                    throw new ShowUpdateNotAllowedException(String.format("Show with id %d cannot be opened", showId));
-                }
-            } else {
-                log.info("Canceling show {}", showId);
-                if (show.get().getStatus() == Show.Status.CREATED || show.get().getStatus() == Show.Status.OPENED) {
-                    return showService.cancelShow(show.get());
-                } else {
-                    throw new ShowUpdateNotAllowedException(String.format("Show with id %d cannot be cancelled", showId));
-                }
-            }
+        if ( statusDto.getOn() ) {
+            log.info("Opening show {}", showId);
+            return showService.openShow(showId, statusDto);
         } else {
-            throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
+            log.info("Canceling show {}", showId);
+            return showService.cancelShow(showId);
         }
     }
 }
