@@ -68,4 +68,17 @@ public class ShowController {
             return showService.cancelShow(showId);
         }
     }
+
+    @DeleteMapping("/{showId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete Show", description = "Deletion of the show with the provided id. The show must exist. Related Performances will be deleted")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Show deleted successfully"),
+            @ApiResponse(responseCode = "400", description = "Show deletion bad request", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Show provided not found", content = @Content)
+    })
+    public void deleteShow(@PathVariable Long showId) {
+        log.info("Deleting show {}", showId);
+        showService.deleteShowById(showId);
+    }
 }

@@ -113,4 +113,14 @@ public class ShowService {
             throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
         }
     }
+
+    public Boolean deleteShowById(Long showId) {
+        Optional<Show> show = this.findById(showId);
+        if (show.isPresent()) {
+            this.delete(showId);
+            return true;
+        } else {
+            throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
+        }
+    }
 }

@@ -35,7 +35,7 @@ public class CategoryController {
 
     @DeleteMapping("/{categoryId}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Delete Category", description = "Deletion of a category by providing its id. It will deleted only if it is not associated to any show")
+    @Operation(summary = "Delete Category", description = "Deletion of a category by providing its id. The category must exists. It will deleted only if it is not associated to any show")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Category deleted successfully"),
         @ApiResponse(responseCode = "400", description = "Category deletion bad request", content = @Content),
