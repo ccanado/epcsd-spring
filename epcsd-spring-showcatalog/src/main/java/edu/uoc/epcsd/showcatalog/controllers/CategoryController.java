@@ -45,4 +45,15 @@ public class CategoryController {
         log.info("Deleting category: {}", categoryId);
         return categoryService.deleteCategoryById(categoryId);
     }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get all Categories", description = "Get all categories")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Categories found successfully")
+    })
+    public Iterable<Category> getCategories() {
+        log.info("Getting all categories");
+        return categoryService.findAll();
+    }
 }
