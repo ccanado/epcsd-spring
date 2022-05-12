@@ -42,6 +42,19 @@ public class ShowService {
         return newShow;
     }
 
+    public Boolean openShow(Show show, String onSaleDate) {
+        show.setStatus(Show.Status.OPENED);
+        show.setOnSaleDate(onSaleDate);
+        this.save(show);
+        return true;
+    }
+
+    public Boolean cancelShow(Show show) {
+        show.setStatus(Show.Status.CANCELLED);
+        this.save(show);
+        return true;
+    }
+
     public Performance createPerformance(Show show, PerformanceDto performanceDto) {
         Performance newPerformance = new Performance();
         newPerformance.setDate(performanceDto.getDate());

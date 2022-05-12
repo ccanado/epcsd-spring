@@ -4,7 +4,6 @@ import edu.uoc.epcsd.showcatalog.vo.Performance;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -33,7 +32,7 @@ public class Show {
     private Integer capacity;
 
     @Column(name = "onSaleDate")
-    private Date onSaleDate;
+    private String onSaleDate;
 
     @Column(name = "status")
     private Status status;
@@ -52,6 +51,8 @@ public class Show {
     }
 
     public static enum Status {
-        CREATED
+        CREATED,
+        OPENED,
+        CANCELLED
     }
 }
