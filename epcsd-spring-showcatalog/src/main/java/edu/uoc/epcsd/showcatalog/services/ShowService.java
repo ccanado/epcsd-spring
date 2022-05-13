@@ -2,7 +2,6 @@ package edu.uoc.epcsd.showcatalog.services;
 
 import edu.uoc.epcsd.showcatalog.dto.PerformanceDto;
 import edu.uoc.epcsd.showcatalog.dto.ShowDto;
-import edu.uoc.epcsd.showcatalog.dto.StatusDto;
 import edu.uoc.epcsd.showcatalog.entities.Category;
 import edu.uoc.epcsd.showcatalog.entities.Show;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
@@ -59,11 +58,13 @@ public class ShowService {
         }
     }
 
-    public Boolean openShow(Long showId, StatusDto statusDto) {
+    public Boolean openShow(Long showId, String onSaleDate) {
         Optional<Show> show = this.findById(showId);
         if (show.isPresent()) {
             if (show.get().getStatus() == Show.Status.CREATED) {
-                String onSaleDate = statusDto.getDate()==null || statusDto.getDate().isEmpty() ? new SimpleDateFormat("dd/MM/yyyy").format(new Date()) : statusDto.getDate();
+                if (onSaleDate==null || onSaleDate.isEmpty() ) {
+                    onSaleDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                }
                 show.get().setStatus(Show.Status.OPENED);
                 show.get().setOnSaleDate(onSaleDate);
                 Set<Performance> performances = show.get().getPerformances();

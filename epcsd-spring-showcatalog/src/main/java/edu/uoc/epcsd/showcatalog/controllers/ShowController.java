@@ -2,7 +2,6 @@ package edu.uoc.epcsd.showcatalog.controllers;
 
 import edu.uoc.epcsd.showcatalog.dto.PerformanceDto;
 import edu.uoc.epcsd.showcatalog.dto.ShowDto;
-import edu.uoc.epcsd.showcatalog.dto.StatusDto;
 import edu.uoc.epcsd.showcatalog.entities.Show;
 import edu.uoc.epcsd.showcatalog.services.ShowService;
 import edu.uoc.epcsd.showcatalog.vo.Performance;
@@ -50,23 +49,32 @@ public class ShowController {
         return newPerformance;
     }
 
-    @PatchMapping("/{showId}")
+    @PatchMapping("/{showId}/open")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Update Show Status", description = "According to the provided boolean value, the status of the show will be updated by opening or canceling the show. The show must exist. Performances will inherit the state of the show")
+    @Operation(summary = "Open Show", description = "Open the show with the provided id. The show must exist. The status will set to OPENED if it is CREATED. The onSaleDate will set to the current date or informed date. Performances will inherit the state of the show")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Show updated successfully"),
             @ApiResponse(responseCode = "400", description = "Show update bad request", content = @Content),
             @ApiResponse(responseCode = "404", description = "Show provided not found", content = @Content),
             @ApiResponse(responseCode = "405", description = "Show update not allowed", content = @Content)
     })
-    public Boolean updateShowStatus(@PathVariable Long showId, @RequestBody StatusDto statusDto) {
-        if ( statusDto.getOn() ) {
-            log.info("Opening show {}", showId);
-            return showService.openShow(showId, statusDto);
-        } else {
-            log.info("Canceling show {}", showId);
-            return showService.cancelShow(showId);
-        }
+    public Boolean openShow(@PathVariable Long showId, @RequestBody (required = false) String onSaleDate) {
+        log.info("Opening show {}", showId);
+        return showService.openShow(showId, onSaleDate);
+    }
+
+    @PatchMapping("/{showId}/cancel")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Cancel Show", description = "The status of the show will be updated to CANCELED if it is CREATED or OPENED. The show must exist. Performances will inherit the state of the show")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Show updated successfully"),
+            @ApiResponse(responseCode = "400", description = "Show update bad request", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Show provided not found", content = @Content),
+            @ApiResponse(responseCode = "405", description = "Show update not allowed", content = @Content)
+    })
+    public Boolean cancelShow(@PathVariable Long showId) {
+        log.info("Canceling show {}", showId);
+        return showService.cancelShow(showId);
     }
 
     @DeleteMapping("/{showId}")
