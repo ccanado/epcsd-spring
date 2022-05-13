@@ -33,6 +33,8 @@ public class ShowService {
         return showRepository.findById(id);
     }
 
+    public Iterable<Show> findByNameLike(String text) { return showRepository.findByNameLike(text); }
+
     public Show save(Show show) { return showRepository.save(show); }
 
     public void delete(Long id) { showRepository.deleteById(id); }

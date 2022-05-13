@@ -81,4 +81,15 @@ public class ShowController {
         log.info("Deleting show {}", showId);
         showService.deleteShowById(showId);
     }
+
+    @GetMapping("/findByName/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Find Shows by Name", description = "Find shows containing in their name the provided string")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Shows found successfully")
+    })
+    public Iterable<Show> findShowsByName(@PathVariable String name) {
+        log.info("Searching shows containing '{}' in their name", name);
+        return showService.findByNameLike(name);
+    }
 }
