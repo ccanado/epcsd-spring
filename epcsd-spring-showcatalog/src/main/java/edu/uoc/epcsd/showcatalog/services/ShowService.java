@@ -24,12 +24,13 @@ public class ShowService {
     @Autowired
     private CategoryService categoryService;
 
-    public Iterable<Show> findAll() {
-        return showRepository.findAll();
-    }
-
     public Optional<Show> findById(Long id) {
-        return showRepository.findById(id);
+        Optional<Show> show = showRepository.findById(id);
+        if (show.isPresent()) {
+            return show;
+        } else {
+            throw new ShowNotFoundException(String.format("Show with id %d not found", id));
+        }
     }
 
     public Iterable<Show> findByNameLike(String text) { return showRepository.findByNameLike(text); }

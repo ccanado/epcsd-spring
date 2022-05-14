@@ -4,7 +4,9 @@ import edu.uoc.epcsd.showcatalog.dto.CategoryDto;
 import edu.uoc.epcsd.showcatalog.entities.Category;
 import edu.uoc.epcsd.showcatalog.services.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.log4j.Log4j2;
@@ -50,7 +52,9 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get all Categories", description = "Get all categories")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Categories found successfully")
+        @ApiResponse(responseCode = "200", description = "Categories found successfully",
+                content = { @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Category.class))) }),
+        @ApiResponse(responseCode = "404", description = "Categories not found", content = @Content)
     })
     public Iterable<Category> getCategories() {
         log.info("Getting all categories");
