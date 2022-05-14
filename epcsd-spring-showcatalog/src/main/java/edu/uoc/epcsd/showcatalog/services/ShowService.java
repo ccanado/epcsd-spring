@@ -34,6 +34,15 @@ public class ShowService {
 
     public Iterable<Show> findByNameLike(String text) { return showRepository.findByNameLike(text); }
 
+    public Iterable<Show> findByCategoryId(Long categoryId) {
+        Optional<Category> category = categoryService.findById(categoryId);
+        if (category.isPresent()) {
+            return showRepository.findByCategory(category.get());
+        } else {
+            throw new CategoryNotFoundException(String.format("Category with id %d not found", categoryId));
+        }
+    }
+
     public Show save(Show show) { return showRepository.save(show); }
 
     public void delete(Long id) { showRepository.deleteById(id); }

@@ -100,4 +100,15 @@ public class ShowController {
         log.info("Searching shows containing '{}' in their name", name);
         return showService.findByNameLike(name);
     }
+
+    @GetMapping("/findByCategory/{categoryId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Find Shows by Category", description = "Find shows by the provided category id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Shows found successfully")
+    })
+    public Iterable<Show> findShowsByCategory(@PathVariable Long categoryId) {
+        log.info("Searching shows by category {}", categoryId);
+        return showService.findByCategoryId(categoryId);
+    }
 }
