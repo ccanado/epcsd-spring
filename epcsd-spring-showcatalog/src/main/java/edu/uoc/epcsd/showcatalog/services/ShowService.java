@@ -44,6 +44,15 @@ public class ShowService {
         }
     }
 
+    public Iterable<Performance> findPerformancesByShowId(Long showId) {
+        Optional<Show> show = findById(showId);
+        if (show.isPresent()) {
+            return show.get().getPerformances();
+        } else {
+            throw new ShowNotFoundException(String.format("Show with id %d not found", showId));
+        }
+    }
+
     public Show save(Show show) { return showRepository.save(show); }
 
     public void delete(Long id) { showRepository.deleteById(id); }

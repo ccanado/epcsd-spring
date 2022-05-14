@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/controllers/ShowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/repositories/ShowRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/repositories/ShowRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/ShowService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +104,7 @@
       <workItem from="1652389175833" duration="12953000" />
       <workItem from="1652435684166" duration="1969000" />
       <workItem from="1652515173903" duration="35000" />
-      <workItem from="1652516380398" duration="1517000" />
+      <workItem from="1652516380398" duration="2474000" />
     </task>
     <servers />
   </component>

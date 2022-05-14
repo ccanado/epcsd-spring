@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @RestController
-@RequestMapping("/show")
+@RequestMapping("/shows")
 public class ShowController {
     @Autowired
     private ShowService showService;
@@ -37,7 +37,7 @@ public class ShowController {
         return newShow.getId();
     }
 
-    @PutMapping("/{showId}/performance")
+    @PutMapping("/{showId}/performances")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Add Performance to a show", description = "Addition of a new performance for the show with the provided id. The show must exist. The status will set to CREATED")
     @ApiResponses(value = {
@@ -130,5 +130,18 @@ public class ShowController {
     public Show findShowById(@PathVariable Long showId) {
         log.info("Searching show {}", showId);
         return showService.findById(showId).get();
+    }
+
+    @GetMapping("/{showId}/performances")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Find Performances by Show Id", description = "Find performances of the provided show")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Performances found successfully",
+                    content = { @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Performance.class))) }),
+            @ApiResponse(responseCode = "404", description = "Show provided not found", content = @Content)
+    })
+    public Iterable<Performance> findPerformancesByShowId(@PathVariable Long showId) {
+        log.info("Searching performances by show {}", showId);
+        return showService.findPerformancesByShowId(showId);
     }
 }
