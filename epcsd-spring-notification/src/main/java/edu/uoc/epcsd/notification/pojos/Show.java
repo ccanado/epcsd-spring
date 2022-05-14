@@ -4,7 +4,7 @@ import lombok.*;
 
 import java.util.List;
 
-@ToString
+@ToString(exclude = "performances")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -17,5 +17,27 @@ public class Show {
 
     private String name;
 
-    private List<Category> categories;
+    private String description;
+
+    private String image;
+
+    private Double price;
+
+    private Integer duration;
+
+    private Integer capacity;
+
+    private String onSaleDate;
+
+    private Status status;
+
+    private Category category;
+
+    private List<Performance> performances;
+
+    public static enum Status {
+        CREATED,
+        OPENED,
+        CANCELLED
+    }
 }

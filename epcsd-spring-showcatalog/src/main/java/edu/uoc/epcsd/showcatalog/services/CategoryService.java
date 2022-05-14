@@ -7,12 +7,14 @@ import edu.uoc.epcsd.showcatalog.exceptions.CategoryAlreadyExistsException;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryDeleteNotAllowedException;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
 import edu.uoc.epcsd.showcatalog.repositories.CategoryRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Log4j2
 @Service
 public class CategoryService {
     @Autowired
@@ -39,7 +41,8 @@ public class CategoryService {
     }
 
     public void notifyNewShow(Show show) {
-        kafkaTemplate.send("show-topic", show);
+        log.info("Notifying new show '{}' by pub/sub topic 'show.add'", show.getName());
+        kafkaTemplate.send("shows.add", show);
     }
 
     public Category createCategory(CategoryDto categoryDto) {
