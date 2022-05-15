@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc266451-1d93-4600-9e3e-ff4cae9dd819" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/pojos/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/kafka/KafkaClassListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/kafka/KafkaClassListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/pojos/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/pojos/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/pojos/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/pojos/Show.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/services/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/services/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" afterDir="false" />
@@ -109,7 +103,10 @@
       <workItem from="1652389175833" duration="12953000" />
       <workItem from="1652435684166" duration="1969000" />
       <workItem from="1652515173903" duration="35000" />
-      <workItem from="1652516380398" duration="7807000" />
+      <workItem from="1652516380398" duration="8089000" />
+      <workItem from="1652561873088" duration="41000" />
+      <workItem from="1652592838190" duration="1825000" />
+      <workItem from="1652597596828" duration="264000" />
     </task>
     <servers />
   </component>

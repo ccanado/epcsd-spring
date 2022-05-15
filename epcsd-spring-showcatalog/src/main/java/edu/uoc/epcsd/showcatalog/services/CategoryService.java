@@ -6,6 +6,7 @@ import edu.uoc.epcsd.showcatalog.entities.Show;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryAlreadyExistsException;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryDeleteNotAllowedException;
 import edu.uoc.epcsd.showcatalog.exceptions.CategoryNotFoundException;
+import edu.uoc.epcsd.showcatalog.kafka.KafkaConstants;
 import edu.uoc.epcsd.showcatalog.repositories.CategoryRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class CategoryService {
     }
 
     public void notifyNewShow(Show show) {
-        log.info("Notifying new show '{}' by pub/sub topic 'show.add'", show.getName());
-        kafkaTemplate.send("shows.add", show);
+        log.info("Notifying new show '{}' by pub/sub topic", show.getName());
+        kafkaTemplate.send(KafkaConstants.SHOW_TOPIC + KafkaConstants.SEPARATOR + KafkaConstants.COMMAND_ADD, show);
     }
 
     public Category createCategory(CategoryDto categoryDto) {
