@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc266451-1d93-4600-9e3e-ff4cae9dd819" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/services/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epcsd-spring-notification/src/main/java/edu/uoc/epcsd/notification/services/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uoc/epcsd/showcatalog/services/CategoryService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,7 @@
       <workItem from="1652516380398" duration="8089000" />
       <workItem from="1652561873088" duration="41000" />
       <workItem from="1652592838190" duration="1825000" />
-      <workItem from="1652597596828" duration="264000" />
+      <workItem from="1652597596828" duration="891000" />
     </task>
     <servers />
   </component>

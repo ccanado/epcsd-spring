@@ -1,0 +1,705 @@
+{
+	"info": {
+		"_postman_id": "b32b73ef-9c18-4c25-bd46-7c65eeb780fb",
+		"name": "epcsd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Concierto\",\n    \"description\": \"Conciertos de música en directo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{showcatalogUrl}}/categories",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create \"Concierto\"",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Concierto\",\n    \"description\": \"Conciertos de música en directo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/categories",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Create \"Teatro\"",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Teatro\",\n    \"description\": \"Forma literaria constituida por diálogos entre personajes y con un cierto orden\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/categories",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Create Show",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryId\": 1,\n    \"name\": \"Noche de las Velas\",\n    \"description\": \"Especial Hayao Miyazaki\",\n    \"price\": 40,\n    \"capacity\": 80,\n    \"duration\": 90\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create \"Velas1\"",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": 1,\n    \"name\": \"Noche de las Velas\",\n    \"description\": \"Especial Hayao Miyazaki\",\n    \"price\": 40,\n    \"capacity\": 80,\n    \"duration\": 90\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:20:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "1"
+				},
+				{
+					"name": "Create \"Velas2\"",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": 1,\n    \"name\": \"Noche de las Velas en Pedraza\",\n    \"description\": \"Concierto a la luz de las velas en Pedraza\",\n    \"price\": 32,\n    \"capacity\": 120,\n    \"duration\": 90\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:20:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "1"
+				},
+				{
+					"name": "Create \"Ser\"",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": 2,\n    \"name\": \"Ser o no ser\",\n    \"description\": \"Juan Echanove en el Teatro de la Latina\",\n    \"price\": 28,\n    \"capacity\": 250,\n    \"duration\": 90\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:20:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "1"
+				}
+			]
+		},
+		{
+			"name": "Add Performance",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"20:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1/performances",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1",
+						"performances"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Performance 1.1",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"20:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows/1/performances",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows",
+								"1",
+								"performances"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:27:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"20:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\",\n    \"remainingSeats\": 80,\n    \"status\": \"CREATED\"\n}"
+				},
+				{
+					"name": "Performance 1.2",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"22:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows/1/performances",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows",
+								"1",
+								"performances"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:27:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"20:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\",\n    \"remainingSeats\": 80,\n    \"status\": \"CREATED\"\n}"
+				},
+				{
+					"name": "Performance 3.1",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"20/05/2022\",\n    \"time\": \"21:30\",\n    \"streamingURL\": \"https://www.teatrolalatina.es/obra-de-teatro/ser-o-no-ser/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{showcatalogUrl}}/shows/1/performances",
+							"host": [
+								"{{showcatalogUrl}}"
+							],
+							"path": [
+								"shows",
+								"1",
+								"performances"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 May 2022 06:27:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"date\": \"15/05/2022\",\n    \"time\": \"20:00\",\n    \"streamingURL\": \"https://feverup.com/m/110007\",\n    \"remainingSeats\": 80,\n    \"status\": \"CREATED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Open Show",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1/open",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Show",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1/cancel",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/categories/1",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Show",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/categories",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shows by Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/findByName/Velas",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"findByName",
+						"Velas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shows by Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/findByCategory/1",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"findByCategory",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Show Performances",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{showcatalogUrl}}/shows/1/performances",
+					"host": [
+						"{{showcatalogUrl}}"
+					],
+					"path": [
+						"shows",
+						"1",
+						"performances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Show Notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{notificationUrl}}/notifications/show/1",
+					"host": [
+						"{{notificationUrl}}"
+					],
+					"path": [
+						"notifications",
+						"show",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "showcatalogUrl",
+			"value": "http://localhost:18081"
+		},
+		{
+			"key": "notificationUrl",
+			"value": "http://localhost:18082"
+		}
+	]
+}
